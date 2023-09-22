@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "942637387284",
+    "project_id": "inu-ordinals",
+    "storage_bucket": "inu-ordinals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942637387284:android:4a9811da3afab6bbcee101",
+        "android_client_info": {
+          "package_name": "com.inu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942637387284-2mcrltgtdiihapu12h2j646qkqel788b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxJZbvCkmIe_F0lsR6SEkJJ9zCc8Lzueo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942637387284-2mcrltgtdiihapu12h2j646qkqel788b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
