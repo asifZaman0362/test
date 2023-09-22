@@ -61,16 +61,16 @@
 
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/Build.loader.js";
-    var config = {
-      dataUrl: buildUrl + "/Build.data",
-      frameworkUrl: buildUrl + "/Build.framework.js",
-      codeUrl: buildUrl + "/Build.wasm",
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "Sergey Designer",
-      productName: "Hokinu Game",
-      productVersion: "2",
-      showBanner: unityShowBanner,
-    };
+   var config = {
+        dataUrl: buildUrl + "/Build.data.gz",
+        frameworkUrl: buildUrl + "/Build.framework.js.gz",
+        codeUrl: buildUrl + "/Build.wasm.gz",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Sergey Designer",
+        productName: "Hokinu Game",
+        productVersion: "2",
+        showBanner: unityShowBanner,
+      };
 
     // By default Unity keeps WebGL canvas render target size matched with
     // the DOM size of the canvas element (scaled by window.devicePixelRatio)
