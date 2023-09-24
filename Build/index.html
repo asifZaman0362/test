@@ -7,6 +7,42 @@
   <title>Unity WebGL Player | Hokinu Game</title>
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
+  <script>
+    console.log = function(args) => document.querySelector('#debug')
+  </script>
+  <style>
+    /* Style for the log container */
+    #log-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px; /* Adjust the height as needed */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        overflow: auto;
+        padding: 10px;
+        font-family: monospace;
+    }
+    .error {
+        color: red;
+    }
+    .toggle-button {
+      position: fixed;
+      top: 220px;
+      width: 80px;
+      height: 20px;
+      font-size: 50%;
+    }
+    #copy {
+      position: fixed;
+      top: 220px;
+      left: 90px;
+      width: 80px;
+      height: 20px;
+      font-size: 50%;
+    }
+</style>
 </head>
 
 <body>
@@ -25,6 +61,65 @@
       <div id="unity-build-title">Hokinu Game</div>
     </div>
   </div>
+
+      <div id="log-container"></div>
+    <button class="toggle-button" onclick="toggleLogContainer()">Toggle Debug</button>
+    <button id="copy" onclick="copyLogToClipboard()">Copy</button>
+    <script>
+        function toggleLogContainer() {
+            const logContainer = document.getElementById('log-container');
+            const button = document.getElementById('toggle-button');
+          
+            if (logContainer.style.display === 'none' || logContainer.style.display === '') {
+                logContainer.style.display = 'block';
+            } else {
+                logContainer.style.display = 'none';
+            }
+        }
+        // Function to append log messages to the log container
+        function appendLog(message, type) {
+            const logContainer = document.getElementById('log-container');
+            const logMessage = document.createElement('div');
+            logMessage.className = type;
+            logMessage.textContent = `${type}: ${message}`;
+            logContainer.appendChild(logMessage);
+        }
+
+        // Replace the console.log and console.error functions
+        console.log = function(message) {
+            appendLog(message, 'log');
+            // You can also call the original console.log if needed
+            // Uncomment the line below:
+            // Function.prototype.apply.call(console.log, console, arguments);
+        };
+
+        console.error = function(message) {
+            appendLog(message, 'error');
+            // You can also call the original console.error if needed
+            // Uncomment the line below:
+            // Function.prototype.apply.call(console.error, console, arguments);
+        };
+        function copyLogToClipboard() {
+          const logContainer = document.getElementById('log-container');
+          const logText = logContainer.innerText;
+
+          // Create a temporary textarea element to copy the text
+          const textarea = document.createElement('textarea');
+          textarea.value = logText;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+
+          // Provide some visual feedback to the user
+          alert('Debug log copied to clipboard');
+        }
+
+        // Example usage
+        console.log('This is a log message.');
+        console.error('This is an error message.');
+    </script>
+
   <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
   <script>
@@ -61,10 +156,15 @@
 
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/Build.loader.js";
+    var _codeUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.wasm.gz';
+    var _dataUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.data.gz';
+    var _frameworkUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.framework.js';
+    //var _codeUrl = 'http://hokinucoin.com/Build/Build.wasm.gz';
+    //var _dataUrl = 'http://hokinucoin.com/Build/Build.data.gz';
    var config = {
-        dataUrl: buildUrl + "/Build.data.gz",
-        frameworkUrl: buildUrl + "/Build.framework.js.gz",
-        codeUrl: buildUrl + "/Build.wasm.gz",
+        dataUrl: _dataUrl,
+        frameworkUrl: _frameworkUrl,
+        codeUrl: _codeUrl,
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Sergey Designer",
         productName: "Hokinu Game",
@@ -126,7 +226,7 @@
     // Your web app's Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyB4-jl83nJ9uzOAu97Ku1dqA9vgcip-yXY",
-      authDomain: "inu-ordinals.firebaseapp.com",
+      authDomain: "hokinucoin.com",
       projectId: "inu-ordinals",
       storageBucket: "inu-ordinals.appspot.com",
       messagingSenderId: "942637387284",
