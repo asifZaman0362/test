@@ -7,9 +7,6 @@
   <title>Unity WebGL Player | Hokinu Game</title>
   <link rel="shortcut icon" href="TemplateData/favicon.ico">
   <link rel="stylesheet" href="TemplateData/style.css">
-  <script>
-    console.log = function(args) => document.querySelector('#debug')
-  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
     html, body {
@@ -34,7 +31,7 @@
       width: 200%;
       left: 0%;
       z-index: -99;
-      background: url('./Background.png');
+      background: url('https://d2f08o38bhziej.cloudfront.net/Background.png');
       background-repeat: repeat-x;
       background-size: contain;
       animation: 20s linear 0s infinite scrollBg;
@@ -113,9 +110,9 @@
 <body>
   <div id="login-container">
     <div id="bg"></div>
-    <img src="./Logo.png" alt="" id="logo">
+    <img src="https://d2f08o38bhziej.cloudfront.net/Logo.png" alt="" id="logo">
     <h1>Please login via twitter</h1>
-    <img src="./twitter_logo.png" alt="" id="login">
+    <img src="https://d2f08o38bhziej.cloudfront.net/twitter_logo.png" alt="" id="login">
   </div>
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" width=900 height=600></canvas>
@@ -232,11 +229,14 @@
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Build.loader.js";
-      var _codeUrl = 'Build/Build.wasm';
-      var _dataUrl = 'Build/Build.data';
-      var _frameworkUrl = 'Build/Build.framework.js';
-      //var _codeUrl = 'http://hokinucoin.com/Build/Build.wasm.gz';
-      //var _dataUrl = 'http://hokinucoin.com/Build/Build.data.gz';
+	    /*
+      var _codeUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.wasm';
+      var _dataUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.data';
+	    */
+      //var _frameworkUrl = 'https://d2f08o38bhziej.cloudfront.net/Build.framework.js';
+	    var _codeUrl = buildUrl + "/Build.wasm";
+	    var _dataUrl = buildUrl + "/Build.data";
+	    var _frameworkUrl = buildUrl + "/Build.framework.js";
      var config = {
           dataUrl: _dataUrl,
           frameworkUrl: _frameworkUrl,
@@ -303,13 +303,13 @@
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyCWamSATJ855sfNEBTvSgUZNDzagPwggZE",
-      authDomain: "localhost:8000",
-      projectId: "testauthtwitter",
-      storageBucket: "testauthtwitter.appspot.com",
-      messagingSenderId: "973882351536",
-      appId: "1:973882351536:web:0feddb57619cd29f6c4075",
-      measurementId: "G-HKNGCBQW17"
+      apiKey: "AIzaSyB4-jl83nJ9uzOAu97Ku1dqA9vgcip-yXY",
+      authDomain: "hokinucoin.com",
+      projectId: "inu-ordinals",
+      storageBucket: "inu-ordinals.appspot.com",
+      messagingSenderId: "942637387284",
+      appId: "1:942637387284:web:e82ea313499fe856cee101",
+      measurementId: "G-HKNGCBQW17",
     };
     const provider = new firebase.auth.TwitterAuthProvider();
 
